@@ -4,24 +4,27 @@ public class Position {
     private long x;
     private long y;
 
-    public Position(long x, long y) {
+    public Position() {
+    }
+
+    public Position(final long x, final long y) {
         this.x = x;
         this.y = y;
     }
 
     public long getX() {
-        return x;
+        return this.x;
     }
 
-    public void setX(long x) {
+    public void setX(final long x) {
         this.x = x;
     }
 
     public long getY() {
-        return y;
+        return this.y;
     }
 
-    public void setY(long y) {
+    public void setY(final long y) {
         this.y = y;
     }
 }
