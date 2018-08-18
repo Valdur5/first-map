@@ -1,5 +1,6 @@
 package de.pandigo.games.first.service;
 
+import de.pandigo.games.first.entity.MoveResult;
 import de.pandigo.games.first.entity.Position;
 
 /**
@@ -20,6 +21,7 @@ public interface MapService {
      *
      * @param objectId    A generic game object id which possibly can be moved
      * @param newPosition The new position which the object should be moved to
+     * @return MoveResult contains all the information about the movement
      */
-    void moveObjectToPosition(long objectId, Position newPosition);
+    MoveResult moveObjectToPosition(long objectId, Position newPosition);
 }

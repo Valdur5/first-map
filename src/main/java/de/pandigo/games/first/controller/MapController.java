@@ -1,5 +1,6 @@
 package de.pandigo.games.first.controller;
 
+import de.pandigo.games.first.domain.entity.map.MoveResult;
 import de.pandigo.games.first.domain.entity.map.Position;
 import de.pandigo.games.first.domain.type.CustomMediaType;
 import de.pandigo.games.first.service.MapService;
@@ -28,9 +29,9 @@ public class MapController {
     }
 
     @RequestMapping(value = "/{objectId}", method = RequestMethod.POST, consumes = CustomMediaType.APPLICATION_MAP_OBJECTMOVETOPOSITION_JSON)
-    public void moveObjectToPosition(@PathVariable(value = "objectId") final long objectId, @RequestBody() final Position position) {
+    public MoveResult moveObjectToPosition(@PathVariable(value = "objectId") final long objectId, @RequestBody() final Position position) {
         LOGGER.trace("Called moveObjectToPosition objectId: {}, x: {} y: {}", objectId, position.getX(), position.getY());
-        this.mapService.moveObjectToPosition(objectId, this.mapper.map(position, de.pandigo.games.first.entity.Position.class));
+        return this.mapper.map(this.mapService.moveObjectToPosition(objectId, this.mapper.map(position, de.pandigo.games.first.entity.Position.class)), MoveResult.class);
     }
 
 }
